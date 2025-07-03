@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP</title>
+    <style>
+        body{
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(images/otp.jpeg);
+        }
+        h1{
+            color: greenyellow;
+            position: relative;
+            bottom: 25px;
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        input{
+            height: 30px;
+            width: 30px;
+            margin: 8px 3px;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-align: center;
+            color: greenyellow;
+            background-color: transparent;
+        }
+        #center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid white;
+            padding: 50px;
+            border-radius: 20px;
+            background-color: black;
+            width: 400px;
+        }
+        button{
+            color: greenyellow;
+            background-color: black;
+            height: 30px;
+            border: 2px solid white;
+            border-radius: 10px;
+            position: relative;
+            top: 25px;
+            font-size: 15px;
+            font-family: sans-serif;
+        }
+        p{
+            color: greenyellow;
+            position: relative;
+            top: 25px;
+        
+        }
+    </style>
+</head>
+<body>
+        <div id="center">
+            <h1>OTP VERIFICATION</h1>
+            <div>
+                <input type="text" class="otp" maxlength="1">
+                <input type="text" class="otp" maxlength="1">
+                <input type="text" class="otp" maxlength="1">
+                <input type="text" class="otp" maxlength="1">
+            </div>
+            <button onclick="generateOTP()">Generate OTP</button>
+            <p>Don't get the code?
+                <a href="" style="color: greenyellow;">resend</a></p>
+            <button onclick="Clear()">Verify</button>
+        </div>
+
+        <script>
+            function generateOTP() {
+                let otp = Math.floor(1000 + Math.random() * 9000).toString();
+                let otpInputs = document.querySelectorAll(".otp");
+
+                otpInputs.forEach((input, index) => {
+                input.value = otp[index] || '';
+                });
+            }
+            function Clear(){
+                let otpInputs = document.querySelectorAll(".otp");
+                otpInputs.forEach((input, index)=>{
+                    input.value = '';
+                })
+            }
+        </script>
+</body>
+</html>
